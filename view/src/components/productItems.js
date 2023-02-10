@@ -3,7 +3,7 @@ export const products = [
         id : 0,
         name : 'chair',
         description : 'Four legged chair',
-        image : 'https://www.dan-form.com/media/d5iiuemc/arch-chair-pebble-green-boucle-fabric-with-black-metal-legs-100205105-01-main.png?width=1920&mode=crop&heightratio=1',
+        image:'https://www.ikea.com/om/en/images/products/hattefjaell-office-chair-with-armrests-smidig-black__1019087_pe831296_s5.jpg',
         category : 'D' ,
         price : 2000,
         number : 1,
@@ -12,16 +12,16 @@ export const products = [
         id : 1,
         name : 'flower',
         description : 'Beautiful artificial flower',
-        image : 'https://static-01.daraz.com.np/p/dcd54aab2e3d9668961783675785ac11.jpg',
+        image : 'http://nelsonhenricks.com/wordpress/wp-content/uploads/2017/03/02-Flower-Painting-at-PPCA.jpg',
         category : 'E' ,
         price : 500,
         number : 1
     },
     {
         id : 2,
-        name : 'flower',
+        name : 'Lehenga',
         description : 'Beautiful artificial flower',
-        image : 'https://static-01.daraz.com.np/p/dcd54aab2e3d9668961783675785ac11.jpg',
+        image : 'https://www.fabja.com/pub/media/catalog/product/cache/74c1057f7991b4edb2bc7bdaa94de933/p/i/pink-digital-print-faux-georgette-lehenga-choli-fj102734.jpg',
         category : 'E' ,
         price : 1000,
         number : 1
@@ -37,9 +37,9 @@ export const products = [
     },
     {
         id : 4,
-        name : 'flower',
+        name : 'Electric Jug',
         description : 'Beautiful artificial flower',
-        image : 'https://www.dan-form.com/media/d5iiuemc/arch-chair-pebble-green-boucle-fabric-with-black-metal-legs-100205105-01-main.png?width=1920&mode=crop&heightratio=1',
+        image : 'https://sajhakinmel.com/public/uploads/all/U1ojqHqYqc12PYBqJlQ0mfn1JHgjrGBX0dZcS7eh.jpg',
         category : 'E' ,
         price : 1600,
         number : 1

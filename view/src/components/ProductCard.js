@@ -11,9 +11,9 @@ const ProductCard = (props) => {
             <div className="product-image">
 
                 {/* <Link to="/product=id" onClick={() => props.handleProductClick('event', props.productItem.id)}>
-                    <img src={process.env.PUBLIC_URL + props.productItem.imageUrl} className="product-thumb" alt="" />
+                    <img src={process.env.PUBLIC_URL + props.image.imageUrl} className="product-thumb" alt="" />
                 </Link> */}
-                <Link><img src={props.image}></img></Link>
+                <Link><img src={props.image} className="product-thumb" ></img></Link>
 
                 <button className="card-btn" onClick={() => props.handleAddToCart('event', props.productItem)}>Add To Cart</button>
             </div>

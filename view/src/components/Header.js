@@ -17,11 +17,12 @@ const Header = () => {
                     </div>
                     <input className='input-text' type='text' placeholder='Search Products'></input>
                     <button className='btn'> Search</button>
+                    <span style={{marginLeft:'250px'}}></span>
                     <IconButton
                     // onClick={handleCart}
                     >
                         <ShoppingCartIcon
-                            sx={{ color: '#383838', marginLeft: '200px' }}
+                            sx={{ color: '#383838' }}
                             fontSize='large'
                         />
                     </IconButton>
