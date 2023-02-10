@@ -32,7 +32,7 @@ export const products = [
         description : 'Beautiful artificial flower',
         image : 'https://static-01.daraz.com.np/p/dcd54aab2e3d9668961783675785ac11.jpg',
         category : 'E' ,
-        price : 1000,
+        price : 1500,
         number : 1
     },
     {
@@ -41,7 +41,7 @@ export const products = [
         description : 'Beautiful artificial flower',
         image : 'https://www.dan-form.com/media/d5iiuemc/arch-chair-pebble-green-boucle-fabric-with-black-metal-legs-100205105-01-main.png?width=1920&mode=crop&heightratio=1',
         category : 'E' ,
-        price : 1000,
+        price : 1600,
         number : 1
     },
 ]

@@ -13,14 +13,14 @@ const ProductCard = (props) => {
                 {/* <Link to="/product=id" onClick={() => props.handleProductClick('event', props.productItem.id)}>
                     <img src={process.env.PUBLIC_URL + props.productItem.imageUrl} className="product-thumb" alt="" />
                 </Link> */}
-                <Link><img src='images/logo.png'></img></Link>
+                <Link><img src={props.image}></img></Link>
 
                 <button className="card-btn" onClick={() => props.handleAddToCart('event', props.productItem)}>Add To Cart</button>
             </div>
             <div className="product-info">
-                <h3 className="product-brand">{props.productItem.name}</h3>
+                <h3 className="product-brand">{props.name}</h3>
                 {/* <p className="product-short-des">{props.description}</p> */}
-                <span className="price">NRs. {props.productItem.price}</span>
+                <span className="price">NRs. {props.price}</span>
             </div>
         </div>
 

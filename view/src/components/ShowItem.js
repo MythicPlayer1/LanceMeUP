@@ -25,9 +25,7 @@ const ShowItem = (props) => {
             })
         }
     )
-
-          
-
+  
     return (
         <div className='products'>
             <h2 className="product-category">Best Selling Products</h2>
@@ -43,8 +41,12 @@ const ShowItem = (props) => {
             </IconButton>
             <div className="product-container">
                 {
-                    props.productsLists.map((product)=>(
-                        <ProductCard></ProductCard>
+                    props.productsLists.map((products)=>(
+                        <ProductCard 
+                           name={products.name}
+                           image={products.image}
+                           price={products.price}
+                        ></ProductCard>
 
                     ))
                 }
