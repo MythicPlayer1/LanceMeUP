@@ -4,6 +4,7 @@ import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos'
 import ProductCard from './ProductCard'
 import './ShowItem.css'
 
+
 const ShowItem = (props) => {
     React.useEffect(
         () => {
@@ -26,6 +27,8 @@ const ShowItem = (props) => {
         }
     )
   
+    
+  
     return (
         <div className='products'>
             <h2 className="product-category">Best Selling Products</h2>
@@ -43,14 +46,15 @@ const ShowItem = (props) => {
                 {
                     props.productsLists.map((products)=>(
                         <ProductCard 
+                            id={products.id}
                            name={products.name}
                            image={products.image}
                            price={products.price}
+                           desc={products.description}
                         ></ProductCard>
 
                     ))
                 }
-                
 
                 {/* {
                     props.productsList.map(

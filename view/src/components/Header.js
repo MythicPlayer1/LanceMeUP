@@ -3,23 +3,26 @@ import './Header.css'
 import { IconButton } from '@mui/material'
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 
 const Header = () => {
+    const navigate=useNavigate();
     return (
         <div>
             
             <div className='main'>
                 <div className='sub-main1'>
                     <div className='container-logo-img'>
-                        <img className='logo-img' src='images/logo.png'></img>
+                       <Link to='/dashboard'> <img className='logo-img' src='images/logo.png' ></img></Link>
                     </div>
                     <input className='input-text' type='text' placeholder='Search Products'></input>
                     <button className='btn'> Search</button>
                     <span style={{marginLeft:'250px'}}></span>
                     <IconButton
-                    // onClick={handleCart}
+                      onClick={()=>{
+                          navigate('/cart')
+                      }}
                     >
                         <ShoppingCartIcon
                             sx={{ color: '#383838' }}
@@ -28,7 +31,9 @@ const Header = () => {
                     </IconButton>
                     <div
                         className='profile-div'
-                    // onClick={handleClick}
+                         onClick={()=>{
+                             navigate('/login')
+                         }}
                     >
                         <IconButton>
                             <AccountCircleIcon

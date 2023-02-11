@@ -45,7 +45,7 @@ const LoginPage = () => {
         console.log(Datas);
         setPassword('')
         setUsername("")
-        navigate('/')
+        navigate('/dashboard')
 
     }
    
