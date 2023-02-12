@@ -15,8 +15,7 @@ const ProductCard = (props) => {
             des:props.desc,
             price:props.price
         }
-        setcartItem(data)   
-             
+        setcartItem([data])     
     }
 
 
