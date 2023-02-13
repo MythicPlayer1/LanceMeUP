@@ -48,7 +48,7 @@ const ShowItem = (props) => {
                         <ProductCard 
                             id={products.id}
                            name={products.name}
-                           image={products.image}
+                           img={products.img}
                            price={products.price}
                            desc={products.description}
                         ></ProductCard>

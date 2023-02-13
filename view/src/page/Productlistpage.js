@@ -22,6 +22,12 @@ const Productlistpage = () => {
            item={item}
            ></Productlists>
          ))}
+          {
+               products.map((item)=>(
+                   <Productlists
+                   item={item}></Productlists>
+               ))
+           }
         </div>
       
 

@@ -1,12 +1,11 @@
 import React, { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { AddProductContext } from '../components/UserContext'
-import Addproduct from './Addproduct'
 import './Adminpage.css'
-import {useState} from 'react'
+
 
 const Adminpage = () => {
-  const { addproduct, setaddproduct } = useContext(AddProductContext)
+  const { addproduct} = useContext(AddProductContext)
   console.log(addproduct)
   const navigate = useNavigate()
   // const {name,price,des,img}=addproduct || {};

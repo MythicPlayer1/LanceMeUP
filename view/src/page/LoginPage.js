@@ -75,6 +75,7 @@ const LoginPage = () => {
                         </div>
                         <div className='pass'>Forget The Password?</div>
                          <button className="lo-sub"  type='submit'>Sign In</button>
+                         <button className="lo-sub"  onClick={()=>{'/admin'}}>Sign in as Admin</button>
 
                     </form>
 
