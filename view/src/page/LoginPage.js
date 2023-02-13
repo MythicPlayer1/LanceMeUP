@@ -11,8 +11,8 @@ const LoginPage = () => {
     const navigate = useNavigate();
 
     const { User, setUser } = useContext(UserContext)
-    const [newUsername, setUsername] = useState();
-    const [newPassword, setPassword] = useState();
+    const [newUsername, setUsername] = useState('');
+    const [newPassword, setPassword] = useState('');
     
 
 
@@ -43,11 +43,26 @@ const LoginPage = () => {
         setUser(Datas)
         setUser(true)
         console.log(Datas);
+        navigate('/dashboard')
         setPassword('')
         setUsername("")
-        navigate('/dashboard')
+        
 
     }
+    const adminsubmithandler = async (event) => {
+
+        event.preventDefault()
+        const Datas = takevalue();
+        setUser(Datas)
+        setUser(true)
+        console.log(Datas);
+        navigate('/admin')
+        setPassword('')
+        setUsername("")
+        
+
+    }
+    console.log(User)
    
 
 
@@ -74,8 +89,8 @@ const LoginPage = () => {
                             <input type="password" onChange={passwordchanger} value={newPassword} />
                         </div>
                         <div className='pass'>Forget The Password?</div>
-                         <button className="lo-sub"  type='submit'>Sign In</button>
-                         <button className="lo-sub"  onClick={()=>{'/admin'}}>Sign in as Admin</button>
+                         <button className="lo-sub" onClick={submithandler} type='submit'>Sign In</button>
+                         <button className="lo-sub"  onClick={adminsubmithandler} type='submit'>Sign in as Admin</button>
 
                     </form>
 

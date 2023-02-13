@@ -1,6 +1,8 @@
+import { IconButton } from '@mui/material'
 import React, { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { AddProductContext } from '../components/UserContext'
+import LogoutIcon from '@mui/icons-material/Logout';
 import './Adminpage.css'
 
 
@@ -14,7 +16,14 @@ const Adminpage = () => {
 
   return (
     <div>
-      <div className='h1-tag'><h1 >A D M I N </h1></div>
+      <div className='h1-tag'><h1 >A D M I N </h1>
+      <IconButton onClick={()=>{navigate('/login')}}>
+
+        <LogoutIcon sx={{color:'white'}}></LogoutIcon>
+
+      </IconButton>
+      </div>
+
 
       <div className='admin-main'>
         <div className='admin-submain'>

@@ -14,7 +14,7 @@ const ProductCard = (props) => {
             id:props.id,
             img:props.img,
             name:props.name,
-            des:props.desc,
+            des:props.des,
             price:props.price
         }
         newarry1.push(data)
@@ -36,7 +36,7 @@ const ProductCard = (props) => {
             </div>
             <div className="product-info">
                 <h3 className="product-brand">{props.name}</h3>
-                {/* <p className="product-short-des">{props.description}</p> */}
+                {/* <p className="product-short-des">{props.des}</p> */}
                 <span className="price">NRs. {props.price}</span>
             </div>
         </div>

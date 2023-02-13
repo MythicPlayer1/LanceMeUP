@@ -1,12 +1,21 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import './Header.css'
 import { IconButton } from '@mui/material'
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import LogoutIcon from '@mui/icons-material/Logout';
 import { Link, useNavigate } from 'react-router-dom';
+import {  UserContext } from './UserContext';
 
 
 const Header = () => {
+    const {User,setUser}=useContext(UserContext)
+    const logOuthandler=()=>{
+        navigate('/login')
+        setUser(null)
+        setUser(false)
+    }
+    console.log(User)
     const navigate=useNavigate();
     return (
         <div>
@@ -29,7 +38,20 @@ const Header = () => {
                             fontSize='large'
                         />
                     </IconButton>
-                    <div
+                    {
+                        User? <div
+                        className='profile-div'
+                         onClick={logOuthandler}
+                    >
+                        <IconButton>
+                            <LogoutIcon
+                                sx={{ color: '#383838' }}
+                                fontSize='large'
+                            />
+                        </IconButton>
+                       
+                        {/* {localStorage.getItem('loggedIn') && <p className='profileName' onClick={handleClick}>{localStorage.getItem('username')}</p>} */}
+                    </div>: <div
                         className='profile-div'
                          onClick={()=>{
                              navigate('/login')
@@ -43,8 +65,8 @@ const Header = () => {
                         </IconButton>
                         {/* {localStorage.getItem('loggedIn') && <p className='profileName' onClick={handleClick}>{localStorage.getItem('username')}</p>} */}
                     </div>
-
-
+                    }
+                  
                 </div>
                 <div className='sub-main2'>
                     <ul className='links-container'>

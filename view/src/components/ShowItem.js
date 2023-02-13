@@ -3,6 +3,7 @@ import { IconButton } from '@mui/material'
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos'
 import ProductCard from './ProductCard'
 import './ShowItem.css'
+import { products } from './productItems'
 
 
 const ShowItem = (props) => {
@@ -50,9 +51,19 @@ const ShowItem = (props) => {
                            name={products.name}
                            img={products.img}
                            price={products.price}
-                           desc={products.description}
+                           des={products.description}
                         ></ProductCard>
 
+                    ))
+                }
+                { 
+                    props.addedProductList && props.addedProductList.map((addedproduct)=>(
+                        <ProductCard
+                            name={addedproduct.name}
+                            img={addedproduct.img}
+                            price={addedproduct.price}
+                            des={addedproduct.des}
+                        ></ProductCard>
                     ))
                 }
 
