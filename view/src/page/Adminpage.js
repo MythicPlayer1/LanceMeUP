@@ -1,15 +1,18 @@
 import React, { useContext } from 'react'
-import {  useNavigate } from 'react-router-dom'
-import { AddProductContext} from '../components/UserContext'
+import { useNavigate } from 'react-router-dom'
+import { AddProductContext } from '../components/UserContext'
 import Addproduct from './Addproduct'
 import './Adminpage.css'
+import {useState} from 'react'
 
 const Adminpage = () => {
-  const{addproduct, setaddproduct}=useContext(AddProductContext)
+  const { addproduct, setaddproduct } = useContext(AddProductContext)
   console.log(addproduct)
-  
-  const navigate  =useNavigate()
- 
+  const navigate = useNavigate()
+  // const {name,price,des,img}=addproduct || {};
+  // const newarr=[{name:name,price:price,des:des,img:img},]
+
+
   return (
     <div>
       <div className='h1-tag'><h1 >A D M I N </h1></div>
@@ -17,23 +20,18 @@ const Adminpage = () => {
       <div className='admin-main'>
         <div className='admin-submain'>
           <div className='admin-img'> <img className='admin-img' src='images/online-shopping.png'></img></div>
-          <button  className='admin-btn' onClick={()=>{navigate('/addproduct')}} >AddProduct</button>
+          <button className='admin-btn' onClick={() => { navigate('/addproduct') }} >AddProduct</button>
         </div>
 
         <div className='admin-submain'>
           <div className='admin-img'> <img className='admin-img' src='images/productlist.png'></img></div>
-          <div><button className='admin-btn' onClick={()=>{navigate('/productlist')}}> Productlist</button></div>
+          <div><button className='admin-btn' onClick={() => { navigate('/productlist') }}> Productlist</button></div>
 
         </div>
         <div className='admin-submain'>
           <div className='admin-img'> <img className='admin-img' src='images/cartlist.png'></img></div>
-          <div><button  className='admin-btn'>OrderList</button></div>
-
+          <div><button className='admin-btn'>OrderList</button></div>
         </div>
-      
-   
-
-
       </div>
 
 

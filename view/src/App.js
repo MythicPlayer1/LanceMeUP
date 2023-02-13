@@ -15,8 +15,8 @@ import Productlistpage from "./page/Productlistpage";
 function App(props) {
 
   const [User, setUser] = useState();
-  const [cartItem, setcartItem] = useState()
-  const [addproduct, setaddproduct] = useState()
+  const [cartItem, setcartItem] = useState([])
+  const [addproduct, setaddproduct] = useState([])
   console.log(cartItem)
   console.log(addproduct)
 
@@ -27,7 +27,7 @@ function App(props) {
         <ProductContext.Provider value={{ cartItem, setcartItem }}>
           <AddProductContext.Provider value={{ addproduct, setaddproduct }}>
             <Routes>
-              <Route path="/cart" element={<Cart cartProduct={cartItem} />}></Route>
+              <Route path="/cart" element={<Cart/>}></Route>
               <Route path="/admin" element={<Adminpage />}></Route>
               <Route path='/dashboard' element={<DashBoard />}></Route>
               <Route path='/example' element={<Example />}></Route>

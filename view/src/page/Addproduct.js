@@ -1,54 +1,61 @@
-import { border, borderRadius } from '@mui/system'
+
 import React, { useContext } from 'react'
 import './Adminpage.css'
 import { useState } from 'react'
 import { AddProductContext } from '../components/UserContext'
+import { useNavigate } from 'react-router-dom'
 
 
 
 const Addproduct = () => {
-  const {addproduct, setaddproduct}=useContext(AddProductContext)
+  
+  const navigate=useNavigate()
+  const { addproduct, setaddproduct } = useContext(AddProductContext)
   const [file, setFile] = useState(null)
   const [fileDataURL, setFileDataURL] = useState(null);
-  const [addname, setname]=useState()
-  const [addprice, setprice]=useState()
-  const [adddes, setdes]=useState()
+  const [addname, setname] = useState('')
+  const [addprice, setprice] = useState('')
+  const [adddes, setdes] = useState('')
   
 
-  const namehandler=(event)=>{
+
+  const namehandler = (event) => {
     setname(event.target.value)
   }
-  const pricehandler=(event)=>{
+  const pricehandler = (event) => {
     setprice(event.target.value)
   }
-  const deshandler=(event)=>{
+  const deshandler = (event) => {
     setdes(event.target.value);
   }
-  const submithandler=(event)=>{
+  const submithandler = (event) => {
     event.preventDefault();
-    const addproduct={
-      name:addname,
-      price:addprice,
-      des:adddes,
-      img:fileDataURL
+    const newArry=[...addproduct]
+    const newProduct = {
+      name: addname,
+      price: addprice,
+      des: adddes,
+      img: fileDataURL
     }
-    setaddproduct(addproduct)
+    newArry.push(newProduct)
+    setaddproduct(newArry)
     alert('product added')
     console.log(addproduct)
-   setFileDataURL(' ')
-   setname(' ')
-   setprice(' ')
-   setdes(' ')
-   
+    navigate('/admin')
+    setFileDataURL(' ')
+    setname(' ')
+    setprice(' ')
+    setdes(' ')
+
   }
 
-  const changehandler=(e)=>{
+  const changehandler = (e) => {
     const file = e.target.files[0];
 
     setFile(file)
-    
+
     console.log(file) //yesma files ko sabai detail haru aaucha like format, size, name etc...
-    let fileReader=false;
+    let fileReader = false;
     fileReader = new FileReader(); //FileReader is an API that uses FILE object to read the selected user's files.
     fileReader.onload = (e) => {
       const { result } = e.target;
@@ -68,7 +75,7 @@ const Addproduct = () => {
       <div className='addprod-submain'>
         <div style={{ marginLeft: '150px', width: '500px' }}>
           <h3> Product Image</h3>
-          <img src={fileDataURL} style={{ height: '450px', width: '400px', borderRadius:'7px' }}></img>
+          <img src={fileDataURL} style={{ height: '450px', width: '400px', borderRadius: '7px' }}></img>
 
         </div>
         <div className='addprod-submain1'>
@@ -79,11 +86,12 @@ const Addproduct = () => {
           <p>Choose Image</p>
           <input type='file' onChange={changehandler}></input>
           <p>Description</p>
-          <textarea  value={adddes} onChange={deshandler} style={{ height: '300px',borderRadius:'5px', width: '400px', border: '1px solid rgba(0,0,0,0.15)', fontFamily: 'sans-serif' }} placeholder='name'></textarea><br>
+          <textarea value={adddes} onChange={deshandler} style={{ height: '300px', borderRadius: '5px', width: '400px', border: '1px solid rgba(0,0,0,0.15)', fontFamily: 'sans-serif' }} placeholder='name'></textarea><br>
           </br>
-          <button style={{widht:'350px',height:'30px', color:'white', background:'green' ,border:'1px solid rgba(0,0,0,0.15)', borderRadius:'5px'}} >ADD PRODUCT</button>
+          <button style={{ widht: '350px', height: '30px', color: 'white', background: 'green', border: '1px solid rgba(0,0,0,0.15)', borderRadius: '5px' }} >ADD PRODUCT</button>
         </div></div>
-      
+        <button onClick={()=>{navigate('/admin')}}>ADMIN</button>
+
     </form>
   )
 }

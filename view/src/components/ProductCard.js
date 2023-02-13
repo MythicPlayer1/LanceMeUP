@@ -8,6 +8,8 @@ const ProductCard = (props) => {
     
     const {cartItem, setcartItem }=useContext(ProductContext)
     const productClick=()=>{
+        const newarry1=[...cartItem]
+
         const data={   
             id:props.id,
             img:props.image,
@@ -15,7 +17,8 @@ const ProductCard = (props) => {
             des:props.desc,
             price:props.price
         }
-        setcartItem([data])     
+        newarry1.push(data)
+        setcartItem(newarry1)     
     }
 
 
