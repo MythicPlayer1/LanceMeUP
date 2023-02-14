@@ -4,16 +4,16 @@ import Header from '../components/Header'
 import '../components/CartItems.css'
 import { ProductContext } from '../components/UserContext'
 
-
-
-
-
-
 const Cart = (props) => {
-    const {cartItem}=useContext(ProductContext)
+    const {cartItem, setcartItem, orderItem}=useContext(ProductContext)
+    console.log(cartItem)
+    console.log(orderItem)
+    const carthandeler=()=>{
+        const orderArr=[orderItem]
+
+         
+    }
    
-
-
   return (
     <div>
         <Header></Header>
@@ -28,10 +28,7 @@ const Cart = (props) => {
           
             
         </div>
-        <div style={{width:'100%',display:"flex",justifyContent:'center',marginTop:'10px',alignItems:'center'}}><button className='btn' style={{borderRadius:'5px'}} >Checkout</button> <h3 style={{marginLeft:'25px'}}>Total Price:</h3></div>
-        
-       
-
+        <div style={{width:'100%',display:"flex",justifyContent:'center',marginTop:'10px',alignItems:'center'}}><button className='btn' style={{borderRadius:'5px'}} on onClick={carthandeler} >Checkout</button> <h3 style={{marginLeft:'25px'}}>Total Price:</h3></div>
     </div>
   )
 }

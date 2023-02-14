@@ -15,7 +15,7 @@ import Productlistpage from "./page/Productlistpage";
 function App(props) {
 
   const [User, setUser] = useState();
-  const [cartItem, setcartItem] = useState([])
+  const [cartItem, setcartItem,orderItem] = useState([])
   const [addproduct, setaddproduct] = useState([])
   console.log(cartItem)
   console.log(addproduct)
