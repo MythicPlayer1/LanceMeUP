@@ -38,6 +38,7 @@ function App(props) {
                   <Route path="/dashboard" element={<DashBoard />}></Route>
                   <Route path="/admin" element={<Adminpage />}></Route>
                 </Route>
+                <Route path="/" element={<LoginPage />}></Route>
                 <Route path="/login" element={<LoginPage />}></Route>
                 <Route path="/registration" element={<RegistrationPage />}></Route>
 
