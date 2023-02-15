@@ -3,7 +3,7 @@ import './CartItems.css'
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
 const CartItems = (props) => {
-  console.log(props)
+ 
    
   return (
     <div className='cart-main'>

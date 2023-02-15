@@ -9,6 +9,7 @@ import './Adminpage.css'
 const Adminpage = () => {
   const { addproduct} = useContext(AddProductContext)
   console.log(addproduct)
+  
   const navigate = useNavigate()
   // const {name,price,des,img}=addproduct || {};
   // const newarr=[{name:name,price:price,des:des,img:img},]
@@ -38,7 +39,7 @@ const Adminpage = () => {
         </div>
         <div className='admin-submain'>
           <div className='admin-img'> <img className='admin-img' src='images/cartlist.png'></img></div>
-          <div><button className='admin-btn'>OrderList</button></div>
+          <div><button className='admin-btn' onClick={() => { navigate('/orderpage') }}>OrderList</button></div>
         </div>
       </div>
 

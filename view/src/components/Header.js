@@ -71,7 +71,7 @@ const Header = () => {
                 <div className='sub-main2'>
                     <ul className='links-container'>
                         <li className='link-item'> <Link
-                            to="/category"
+                          
                             className="link"
                             name='Bathroom'
                             //onClick={() => props.handleNavigation('event', 'A')}
@@ -80,7 +80,7 @@ const Header = () => {
                         </Link></li>
                         <li className='link-item'>
                             <Link
-                                to="/category"
+                               
                                 className="link"
                                 name='Bathroom'
                                // onClick={() => props.handleNavigation('event', 'A')}
@@ -89,7 +89,7 @@ const Header = () => {
                             </Link>
                         </li>
                         <li className='link-item'> <Link
-                            to="/category"
+                        
                             className="link"
                             name='Bathroom'
                             // onClick={() => props.handleNavigation('event', 'A')}
@@ -97,7 +97,7 @@ const Header = () => {
                             Womans Fashion
                         </Link></li>
                         <li className='link-item'> <Link
-                            to="/category"
+                         
                             className="link"
                             name='Bathroom'
                             // onClick={() => props.handleNavigation('event', 'A')}

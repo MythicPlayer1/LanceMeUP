@@ -1,6 +1,7 @@
 
 import { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+
 import { UserContext} from '../components/UserContext';
 
 
@@ -10,7 +11,7 @@ const LoginPage = () => {
 
     const navigate = useNavigate();
 
-    const { User, setUser } = useContext(UserContext)
+    const { User, setUser, } = useContext(UserContext)
     const [newUsername, setUsername] = useState('');
     const [newPassword, setPassword] = useState('');
     
@@ -54,7 +55,8 @@ const LoginPage = () => {
         event.preventDefault()
         const Datas = takevalue();
         setUser(Datas)
-        setUser(true)
+        setUser(true);
+        
         console.log(Datas);
         navigate('/admin')
         setPassword('')
@@ -88,14 +90,14 @@ const LoginPage = () => {
                             <span></span>
                             <input type="password" onChange={passwordchanger} value={newPassword} />
                         </div>
-                        <div className='pass'>Forget The Password?</div>
+                        <div className='pass'></div>
                          <button className="lo-sub" onClick={submithandler} type='submit'>Sign In</button>
                          <button className="lo-sub"  onClick={adminsubmithandler} type='submit'>Sign in as Admin</button>
 
                     </form>
 
                 </div>
-                <p style={{color:"white", marginTop:"400px"}}>Don't have an account? <Link to={'/registration'}>Create an account</Link></p>
+                {/* <p style={{color:"white", marginTop:"400px"}}>Don't have an account? <Link to={'/registration'}>Create an account</Link></p> */}
             </div>
         </div>
 

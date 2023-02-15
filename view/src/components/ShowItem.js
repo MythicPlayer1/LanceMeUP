@@ -3,11 +3,12 @@ import { IconButton } from '@mui/material'
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos'
 import ProductCard from './ProductCard'
 import './ShowItem.css'
-import { products } from './productItems'
+import { useEffect } from 'react'
+
 
 
 const ShowItem = (props) => {
-    React.useEffect(
+    useEffect(
         () => {
             const productContainer = [...document.querySelectorAll('.product-container')];
             const nxtBtn = [...document.querySelectorAll('#nxt-btn')];
@@ -45,7 +46,7 @@ const ShowItem = (props) => {
             </IconButton>
             <div className="product-container">
                 {
-                    props.productsLists.map((products)=>(
+                   props.productsLists && props.productsLists.map((products)=>(
                         <ProductCard 
                             id={products.id}
                            name={products.name}
@@ -66,20 +67,6 @@ const ShowItem = (props) => {
                         ></ProductCard>
                     ))
                 }
-
-                {/* {
-                    props.productsList.map(
-                        (product) => {
-                            return <ProductCard
-                                   productItem={product}
-                                // handleProductClick={props.handleProductClick}
-                                // key={product.id}
-                                // handleAddToCart={props.handleAddToCart}
-
-                            />
-                        }
-                    )
-                } */}
 
             </div>
 
