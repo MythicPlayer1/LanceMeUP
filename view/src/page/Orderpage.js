@@ -14,7 +14,7 @@ export const Orderpage = () => {
         <div>
             <div className='addprod-main'>
                 <Link to='/admin'> <img src='images/logo.png' style={{ height: '30px', marginTop: '10px' }}></img></Link>
-                <h2>P R O D U C T  L I S T </h2>
+                <h2>O R D E R E D  L I S T </h2>
                 <div className='product-list'>
                      {orderItem.map((item) => (
                         <Productlists
