@@ -97,7 +97,7 @@ const LoginPage = () => {
                     </form>
 
                 </div>
-                {/* <p style={{color:"white", marginTop:"400px"}}>Don't have an account? <Link to={'/registration'}>Create an account</Link></p> */}
+                <p style={{color:"white", marginTop:"400px"}}>Don't have an account? <Link to={'/registration'}>Create an account</Link></p>
             </div>
         </div>
 

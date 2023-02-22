@@ -16,27 +16,44 @@ const initialValues = {
 }
 
 export const RegistrationPage = () => {
+    const [gender1, setgender]=useState()
     const navigate=useNavigate()
     let array=''; // You cannot assign values to const variables once it is declared. So dont use const ....
     const {errors,handleBlur,handleChange,handleSubmit,values} = useFormik({
         initialValues: initialValues,
         validationSchema: schema,
-        onSubmit: () => {
+         onSubmit:async  () => {
+    
+            const response=await fetch('https://localhost:3500/api/register',{
+                method:'POST',
+                headers:{
+                    'Content-Type':'application/json' //it is necessary to specify the type like binary, URL, JSON etc
+                },
+                body:JSON.stringify(
+                    values //passing the values into body 
+                )
+            })
+            const data=await response.json();
+            console.log(data)
+
            
             array={
                 ...values,
                 gender:gender1
             }
-            navigate('/login')
-            // console.log(array)
+            //navigate('/login')
+           
         }
     })
-    const [gender1, setgender]=useState()
 
     const clickhandler= (event)=>{
         setgender(event.target.value)
     }
     console.log(errors)
+    console.log(values)
+   
+
+    
 
     return (
         <div>
