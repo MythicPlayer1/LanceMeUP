@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './LoginPage.css'
 import { Link, useNavigate } from 'react-router-dom';
 import { useFormik } from 'formik';
@@ -19,11 +19,13 @@ export const RegistrationPage = () => {
     const [gender1, setgender] = useState("")
     const [userDetail, setuserDetail] = useState("")
     const navigate = useNavigate()
+
+    const{fullname, username,email,password,phone}=values
     let array = ''; // You cannot assign values to const variables once it is declared. So dont use const ....
     const { errors, handleBlur, handleChange, handleSubmit, values } = useFormik({
         initialValues: initialValues,
         validationSchema: schema,
-        onSubmit: async () => {
+        onSubmit:() => {
 
             
             setuserDetail(values);
@@ -43,7 +45,13 @@ export const RegistrationPage = () => {
                 'Content-Type': 'application/json' //it is necessary to specify the type like binary, URL, JSON etc
             },
             body: JSON.stringify(
-                userDetail //passing the values into body 
+               {
+                   fullname,
+                   username,
+                   email,
+                   password,
+                   phone
+               }
             )
         })
         const data = await response.json();
