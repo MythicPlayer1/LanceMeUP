@@ -9,9 +9,13 @@ const app= express();
 app.use(cors())
 app.use(express.json());
 
-app.post('/api/register',(req,resp)=>{
+app.get('/', (req,resp)=>{
+    resp.send("hhello from server side")
+})
+
+app.post('/api_register',(req,resp)=>{
     console.log(req.body)
-    resp.json({status:'ok'})
+    resp.json('okay')// yesko response chai hamro react ma jane ho ohhh...
 })
 
 app.listen(3500,()=>{
