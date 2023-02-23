@@ -16,44 +16,48 @@ const initialValues = {
 }
 
 export const RegistrationPage = () => {
-    const [gender1, setgender]=useState()
-    const navigate=useNavigate()
-    let array=''; // You cannot assign values to const variables once it is declared. So dont use const ....
-    const {errors,handleBlur,handleChange,handleSubmit,values} = useFormik({
+    const [gender1, setgender] = useState("")
+    const [userDetail, setuserDetail] = useState("")
+    const navigate = useNavigate()
+    let array = ''; // You cannot assign values to const variables once it is declared. So dont use const ....
+    const { errors, handleBlur, handleChange, handleSubmit, values } = useFormik({
         initialValues: initialValues,
         validationSchema: schema,
-         onSubmit:async  () => {
-    
-            const response=await fetch('https://localhost:3500/api/register',{
-                method:'POST',
-                headers:{
-                    'Content-Type':'application/json' //it is necessary to specify the type like binary, URL, JSON etc
-                },
-                body:JSON.stringify(
-                    values //passing the values into body 
-                )
-            })
-            const data=await response.json();
-            console.log(data)
+        onSubmit: async () => {
 
-           
-            array={
+            
+            setuserDetail(values);
+            array = {
                 ...values,
-                gender:gender1
+                gender: gender1
             }
+            postData();
             //navigate('/login')
-           
+
         }
     })
+    const postData= async ()=>{
+        const response = await fetch('http://localhost:3500/api_register', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json' //it is necessary to specify the type like binary, URL, JSON etc
+            },
+            body: JSON.stringify(
+                userDetail //passing the values into body 
+            )
+        })
+        const data = await response.json();
+        console.log(data)
 
-    const clickhandler= (event)=>{
+    }
+
+    const clickhandler = (event) => {
         setgender(event.target.value)
     }
-    console.log(errors)
-    console.log(values)
-   
+    console.log(userDetail)
 
-    
+
+
 
     return (
         <div>
@@ -70,50 +74,50 @@ export const RegistrationPage = () => {
                             <label >Fullname</label>
                             <span></span>
                             <input type="text" name='fullname' value={values.fullname} onChange={handleChange} onBlur={handleBlur}></input>
-                            {<p style={{fontSize:'10px',marginBottom:'2px', color:'#961d1d'}}>{errors.fullname}</p>}
+                            {<p style={{ fontSize: '10px', marginBottom: '2px', color: '#961d1d' }}>{errors.fullname}</p>}
 
                         </div>
                         <div className='text_feild'>
                             <label >Username </label>
                             <span></span>
                             <input type="text" name='username' value={values.username} onChange={handleChange} onBlur={handleBlur}></input>
-                            {<p style={{fontSize:'10px',marginBottom:'2px', color:'#961d1d'}}>{errors.username} </p>}
+                            {<p style={{ fontSize: '10px', marginBottom: '2px', color: '#961d1d' }}>{errors.username} </p>}
                         </div>
                         <div className='text_feild'>
                             <label >Email</label>
                             <span></span>
                             <input type="email" name="email" value={values.email} onChange={handleChange} onBlur={handleBlur} ></input>
-                            {<p style={{fontSize:'10px',marginBottom:'2px', color:'#961d1d'}}>{errors.email}</p>}
+                            {<p style={{ fontSize: '10px', marginBottom: '2px', color: '#961d1d' }}>{errors.email}</p>}
                         </div>
                         <div className='text_feild'>
                             <label>Password</label>
                             <span></span>
-                            <input type="password" name="password" value={values.password} onChange={handleChange} onBlur={handleBlur}/>
-                            {<p style={{fontSize:'10px',marginBottom:'2px', color:'#961d1d'}}>{errors.password} </p>}
+                            <input type="password" name="password" value={values.password} onChange={handleChange} onBlur={handleBlur} />
+                            {<p style={{ fontSize: '10px', marginBottom: '2px', color: '#961d1d' }}>{errors.password} </p>}
                         </div>
                         <div className='text_feild'>
                             <label>Phone Number</label>
                             <span></span>
                             <input type="tel" name="phone" value={values.phone} onChange={handleChange} onBlur={handleBlur} />
-                            {<p style={{fontSize:'10px',marginBottom:'2px', color:'#961d1d'}}>{errors.phone}</p>}
+                            {<p style={{ fontSize: '10px', marginBottom: '2px', color: '#961d1d' }}>{errors.phone}</p>}
                         </div>
                         <div className='radio-btn' >
                             <div className='head'>Gender</div>
                             <div className='radio-flex'>
                                 <input type='radio' id='male' name='gender' value='male' onClick={clickhandler} ></input> <label htmlFor='male'>Male</label>
-                                <input type='radio' id='female' name='gender' value="female"  onClick={clickhandler} ></input> <label htmlFor='female' >Female</label>
-                                <input type='radio' id='others' name='gender' value='others'  onClick={clickhandler} ></input> <label htmlFor='others'>Others</label>
+                                <input type='radio' id='female' name='gender' value="female" onClick={clickhandler} ></input> <label htmlFor='female' >Female</label>
+                                <input type='radio' id='others' name='gender' value='others' onClick={clickhandler} ></input> <label htmlFor='others'>Others</label>
                             </div>
                         </div>
-                        <button className="lo-sub" style={{ marginTop: "10px", marginBottom:'10px'}} type='submit'>Registration</button>
+                        <button className="lo-sub" style={{ marginTop: "10px", marginBottom: '10px' }} type='submit'>Registration</button>
 
                     </form>
 
                 </div>
-                <p style={{color:"white", marginTop:'5px'}}>Already have an account?<Link to={'/login'}>Sign In</Link></p>
+                <p style={{ color: "white", marginTop: '5px' }}>Already have an account?<Link to={'/login'}>Sign In</Link></p>
             </div>
 
-      
+
         </div>
     )
 }
