@@ -30,15 +30,16 @@ app.post('/api_register',async (req,resp)=>{
     }    // resp.json('okay')// yesko response chai hamro react ma jane ho ohhh...
 })
 app.post('/api_login',async (req,resp)=>{
-    const user= await registerSchema.find({
-        username: req.body.newUsername,
-        password:req.body.newPassword
-    })
+    const user= await registerSchema.findOne(
+        {username: req.body.newUsername,
+        password:req.body.newPassword}
+    )
     if(user){
         return(resp.json({status:'okay', user:true}))
     }else{
         return(resp.json({status:'user not found', user:false}))
     }
+    // resp.send(user)
     
 })
 
