@@ -14,6 +14,21 @@ const LoginPage = () => {
     const { User, setUser, } = useContext(UserContext)
     const [newUsername, setUsername] = useState('');
     const [newPassword, setPassword] = useState('');
+
+    const getApi=async()=>{
+        const response= await fetch('http://localhost:3500/api_login',{
+            method:"POST",
+            headers:{
+                "Content-Type":'application/json',
+            },
+            body:JSON.stringify({
+                newUsername,
+                newPassword
+            })
+        })
+        const result= await response.json();
+        console.log(result)
+    }
     
 
 
@@ -43,8 +58,9 @@ const LoginPage = () => {
         const Datas = takevalue();
         setUser(Datas)
         setUser(true)
+        getApi();
         console.log(Datas);
-        navigate('/dashboard')
+        //navigate('/dashboard')
         setPassword('')
         setUsername("")
         

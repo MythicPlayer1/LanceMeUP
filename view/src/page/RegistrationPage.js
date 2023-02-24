@@ -20,7 +20,7 @@ export const RegistrationPage = () => {
     const [userDetail, setuserDetail] = useState("")
     const navigate = useNavigate()
 
-    const{fullname, username,email,password,phone}=values
+ 
     let array = ''; // You cannot assign values to const variables once it is declared. So dont use const ....
     const { errors, handleBlur, handleChange, handleSubmit, values } = useFormik({
         initialValues: initialValues,
@@ -34,7 +34,11 @@ export const RegistrationPage = () => {
                 gender: gender1
             }
             postData();
-            //navigate('/login')
+           
+            
+            
+            // navigate('/login')
+          
 
         }
     })
@@ -51,6 +55,7 @@ export const RegistrationPage = () => {
                    email,
                    password,
                    phone
+               
                }
             )
         })
@@ -62,7 +67,7 @@ export const RegistrationPage = () => {
     const clickhandler = (event) => {
         setgender(event.target.value)
     }
-    console.log(userDetail)
+     const{fullname, username,email,password,phone}=values
 
 
 
