@@ -2,6 +2,7 @@ const express=require('express')
 const cors=require('cors');
 const registerSchema = require('./schemas/registerSchemas');
 const dbconnect=require('./dbconnection')
+const jwt= require('jsonwebtoken')
 
 
 const app= express();
@@ -35,7 +36,12 @@ app.post('/api_login',async (req,resp)=>{
         password:req.body.newPassword}
     )
     if(user){
-        return(resp.json({status:'okay', user:true}))
+        const token= jwt.sign({
+            fullname:registerSchema.fullname,
+            email:registerSchema.email
+
+        },'magicword')
+        return(resp.json({status:'okay', user:token}))
     }else{
         return(resp.json({status:'user not found', user:false}))
     }
