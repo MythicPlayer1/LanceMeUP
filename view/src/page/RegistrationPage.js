@@ -34,10 +34,7 @@ export const RegistrationPage = () => {
                 gender: gender1
             }
             postData();
-           
-            
-            
-            // navigate('/login')
+            navigate('/login')
           
 
         }

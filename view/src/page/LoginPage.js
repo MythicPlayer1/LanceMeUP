@@ -1,4 +1,5 @@
 
+
 import { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
@@ -27,7 +28,13 @@ const LoginPage = () => {
             })
         })
         const result= await response.json();
-        console.log(result)
+        if(result.user){
+            alert("login sucessful")
+            window.location.href='/dashboard'
+
+        }else{
+            alert('Login unsuccessful, Try again !!')
+        }
     }
     
 
