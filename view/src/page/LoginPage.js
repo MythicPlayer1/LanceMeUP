@@ -30,7 +30,8 @@ const LoginPage = () => {
         const result= await response.json();
         if(result.user){
             alert("login sucessful")
-            window.location.href='/dashboard'
+            // window.location.href='/dashboard'
+            navigate('/dashboard')
 
         }else{
             alert('Login unsuccessful, Try again !!')
