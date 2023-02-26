@@ -37,6 +37,29 @@ const LoginPage = () => {
             alert('Login unsuccessful, Try again !!')
         }
     }
+
+    const getAdminApi=async()=>{
+        const response= await fetch('http://localhost:3500/api_login',{
+            method:"POST",
+            headers:{
+                "Content-Type":'application/json',
+            },
+            body:JSON.stringify({
+                newUsername,
+                newPassword
+            })
+        })
+        const result= await response.json();
+        if(result.user){
+            alert("login sucessful")
+            // window.location.href='/dashboard'
+            navigate('/Admin')
+
+        }else{
+            alert('Login unsuccessful, Try again !!')
+        }
+    }
+    
     
 
 
@@ -80,9 +103,9 @@ const LoginPage = () => {
         const Datas = takevalue();
         setUser(Datas)
         setUser(true);
-        
+        getAdminApi();
         console.log(Datas);
-        navigate('/admin')
+        // navigate('/admin')
         setPassword('')
         setUsername("")
         

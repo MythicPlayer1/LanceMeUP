@@ -57,6 +57,10 @@ export const RegistrationPage = () => {
             )
         })
         const data = await response.json();
+        if(data.status==='ok')
+        {
+            navigate=navigate('login')
+        }
         console.log(data)
 
     }
