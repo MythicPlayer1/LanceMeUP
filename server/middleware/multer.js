@@ -1,17 +1,21 @@
-const multer = require('multer');
-const uploadImage= multer({
-    storage:multer.diskStorage({
-        destination:function(req, file, cb){
-            cb(null, 'uploadImageFiles');
-
-        },
-        filename:function(req, file, cb){
-            cb(null,file.fieldname+"-"+date.now());
-        }
+// const multer = require('multer');
+// const uploadImage=()=>{
+    
+//        const upload=  multer({
+//             storage:multer.diskStorage({
+//                 destination:function(req, file, cb){
+//                     cb(null, 'uploadImageFiles');
         
-        
-    })
-}).single("user_file");
-var upload= multer({storage:storage})
+//                 },
+//                 filename:function(req, file, cb){
+//                     cb(null,file.fieldname+"-"+date.now());
+//                 }
+                
+                
+//             })
+//         }).single("user_file");
+//         return(upload)
+    
+// }
 
-exports.module=uploadImage;
+
