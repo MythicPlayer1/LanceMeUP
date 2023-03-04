@@ -6,38 +6,41 @@ const jwt= require('jsonwebtoken');
 // const uploadImage= require('./middleware/multer');
 const productSchema = require('./schemas/productSchema');
 const fs= require('fs');
-const multer=require('multer')
+// const multer=require('multer')
+const bodyParser=require('body-parser')
 
 
 const app= express();
 
 
 
-//middleware 
+//middleware
+app.use(bodyParser.json({limit:'10mb'}));
+app.use(bodyParser.urlencoded({extended:true,limit:'10mb',parameterLimit:10000})); 
 app.use(cors())
 app.use(express.json());
 
 
-const uploadImage=  multer({
-    storage:multer.diskStorage({
-        destination:function(req, file, cb){
-            cb(null, 'uploadImageFiles');
 
-        },
-        filename:function(req, file, cb){
-            cb(null,file.fieldname+"-"+Date.now()+'.jpg'); 
-        }
+
+// const uploadImage=  multer({
+//     storage:multer.diskStorage({
+//         destination:function(req, file, cb){
+//             cb(null, 'uploadImageFiles');
+
+//         },
+//         filename:function(req, file, cb){
+//             cb(null,file.fieldname+"-"+Date.now()+'.jpg'); 
+//         }
         
         
-    })
-}).single("user_file");
+//     })
+// }).single("user_file");
 
 
 
 
-app.get('/', (req,resp)=>{
-    resp.send("hhello from server side")
-})
+
 
 app.post('/api_register',async (req,resp)=>{
 
@@ -71,25 +74,56 @@ app.post('/api_login',async (req,resp)=>{
     
 })
 
+app.post('/addedProduct',async (req,resp)=>{
+    const data= new productSchema({
+        name:req.body.name,
+        price:req.body.price,
+        des:req.body.des,
+        img:req.body.img
+    })
+    const result= await data.save();
+    resp.send(result);
+})
+
+app.get('/getAddedProduct',async (req,resp)=>{
+    try{    
+        await productSchema.find().then(data=>{
+            resp.send({status:'okay',datas: data})
+        })
+
+    }
+    catch(err){
+
+    }
+})
+
+app.get('/addproduct',async (req,resp)=>{
+    const productItem= await productSchema.find();
+   
+    resp.send(productItem)
+    
+
+})
+
 
 // api for product 
 
-app.post('/api_addproduct',uploadImage, async (req,resp)=>{
-    const result= await new productSchema({
-        name:req.body.name,
-        price:req.body.price,
-        des:req.body.des,nae,
-        img:{
-            data:fs.readFileSync("uploadImageFiles/" + req.file.filename),
-            contentType: "image/png/jpeg"
-        }
-    })
-    const data=result.save();
+// app.post('/api_addproduct',uploadImage, async (req,resp)=>{
+//     const result= await new productSchema({
+//         name:req.body.name,
+//         price:req.body.price,
+//         des:req.body.des,
+//         img:{
+//             data:fs.readFileSync("uploadImageFiles/" + req.file.filename),
+//             contentType: "image/png"
+//         }
+//     })
+//     const data=result.save();
 
-     resp.send(data)
+//      resp.send(data)
 
 
-})
+// })
 
 
 const start=async ()=>{

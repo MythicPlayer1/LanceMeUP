@@ -3,13 +3,10 @@ const { buffer } = require('stream/consumers');
 
 const productSchema= mongoose.Schema(
     {
-        name:String,
-        price:Number,
-        des:String,
-        img:{
-            data:Buffer,
-            contentType:String,
-        }
+        name:{type:String,require:true},
+        price:{type:Number,require:true},
+        des:{type:String,require:true},
+        img:{type:String,require:true}
     }
 )
 
