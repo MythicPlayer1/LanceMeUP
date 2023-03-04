@@ -8,7 +8,7 @@ import './Adminpage.css'
 
 const Adminpage = () => {
   const { addproduct} = useContext(AddProductContext)
-  console.log(addproduct)
+  //console.log(addproduct)
   
   const navigate = useNavigate()
   // const {name,price,des,img}=addproduct || {};

@@ -1,5 +1,5 @@
 
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import './Adminpage.css'
 import { useState } from 'react'
 import { AddProductContext } from '../components/UserContext'
@@ -28,19 +28,35 @@ const Addproduct = () => {
   const deshandler = (event) => {
     setdes(event.target.value);
   }
-  const submithandler = (event) => {
+  const submithandler =  (event) => {
     event.preventDefault();
-    const newArry=[...addproduct]
-    const newProduct = {
-      name: addname,
-      price: addprice,
-      des: adddes,
-      img: fileDataURL
-    }
-    newArry.push(newProduct)
-    setaddproduct(newArry)
+    // const newArry=[...addproduct]
+    // const newProduct = {
+    //   name: addname,
+    //   price: addprice,
+    //   des: adddes,
+    //   img: fileDataURL
+    // }
+    // newArry.push(newProduct)
+    // setaddproduct(newArry)
+
+   const data= fetch("http://localhost:3500/addedProduct",{
+    method:"POST",
+    headers:{
+      'Content-Type':'application/json'
+    },
+    body:JSON.stringify({
+      name:addname,
+      price:addprice,
+      des:adddes,
+      img:fileDataURL
+    })
+  }).then((res)=>res.json()).then((data)=>console.log(data))
+  // const result=await data.json();
+  // console.log(result)
+
     alert('product added')
-    console.log(addproduct)
+   // console.log(addproduct)
     navigate('/admin')
     setFileDataURL(' ')
     setname(' ')
@@ -49,12 +65,13 @@ const Addproduct = () => {
 
   }
 
+
   const changehandler = (e) => {
     const file = e.target.files[0];
 
     setFile(file)
 
-    console.log(file) //yesma files ko sabai detail haru aaucha like format, size, name etc...
+   // console.log(file) //yesma files ko sabai detail haru aaucha like format, size, name etc...
     let fileReader = false;
     fileReader = new FileReader(); //FileReader is an API that uses FILE object to read the selected user's files.
     fileReader.onload = (e) => {
@@ -65,6 +82,9 @@ const Addproduct = () => {
     fileReader.readAsDataURL(file);
 
   }
+
+  
+  
   return (
     <form onSubmit={submithandler}>
       <div className='addprod-main'>

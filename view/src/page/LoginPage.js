@@ -60,7 +60,6 @@ const LoginPage = () => {
         }
     }
     
-    
 
 
     const takevalue = () => {
