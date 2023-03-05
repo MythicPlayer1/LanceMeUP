@@ -1,4 +1,4 @@
-import React, { useContext, useState} from 'react'
+import React, { useContext, useEffect, useState} from 'react'
 import CartItems from '../components/CartItems'
 import Header from '../components/Header'
 import '../components/CartItems.css'
@@ -7,18 +7,45 @@ import { OrderItemContext, ProductContext } from '../components/UserContext'
 const Cart = (props) => {
     const {cartItem, setcartItem}=useContext(ProductContext)
     const {orderItem, setorderItem}=useContext(OrderItemContext)
-  
+    const [datas, setData] = useState([])
+    const [orderedItem,setorderedItem]=useState('')
 
-   
-    console.log(cartItem)
-    const carthandeler=()=>{
-       
-        setorderItem(cartItem)
-        // setorderItems(orderarry) 
-        setcartItem('')
+ 
+    useEffect(() => {
+      apiProductget();
+  
+    }, [])
+  
+    const apiProductget =async () => {
+      await fetch('http://localhost:3500/getorderItem', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'appliction/json'
+        },
+      }).then((res) => res.json()).then((data) => {
+        //console.log(data)
+        setData(data.datas)
+      })
+  
+    } 
+    console.log(datas)
+    const carthandeler=async ()=>{
+        await fetch('http://localhost/3500/orderedItem',{
+            method:"POST",
+            headers:{
+                'Content-Type':'application/json'
+            },
+            body:JSON.stringify({
+                orederdItem:datas
+                
+            })
+        }).then((resp)=>resp.json()).then((ordereddatas)=>{
+            setorderedItem(ordereddatas)
+        });
        
     }
-    console.log(orderItem)
+    //console.log(orderItem)
+    console.log(orderedItem)
  
    
   return (
@@ -27,7 +54,7 @@ const Cart = (props) => {
         <h1 style={{marginLeft:'35px',}}>Shopping cart</h1>
         <div className='cart'>
             {
-               cartItem && cartItem.map((item)=>(
+               datas.map((item)=>(
                     <CartItems
                         item={item} ></CartItems>
                 ))

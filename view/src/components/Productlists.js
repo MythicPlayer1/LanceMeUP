@@ -3,11 +3,7 @@ import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import { IconButton } from '@mui/material';
 
 const Productlists = (props) => {
-    // const base64=btoa(
-    //     String.fromCharCode(...new Uint8Array(props.item.img.data.data))
-    // )
-
-    //console.log(props)
+   
     return (
         <div className='cart-main'>
             

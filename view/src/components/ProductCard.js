@@ -5,20 +5,41 @@ import { ProductContext } from './UserContext';
 
 
 const ProductCard = (props) => {
+
+   
     
     const {cartItem, setcartItem }=useContext(ProductContext)
-    const productClick=()=>{
-        const newarry1=[...cartItem]
+    const {name, price, des, img}=props
+    const productClick= async ()=>{
 
-        const data={   
-            id:props.id,
-            img:props.img,
-            name:props.name,
-            des:props.des,
-            price:props.price
-        }
-        newarry1.push(data)
-        setcartItem(newarry1)     
+        await fetch('http://localhost:3500/orderItem',{
+            method:'POST',
+            headers:{
+                "Content-Type":'application/json'
+            },
+            body:JSON.stringify({
+                name:name,
+                price:price,
+                des:des,
+                img:img
+            })      
+          }).then((res)=>res.json()).then((data)=>{
+              setcartItem(data)
+          });
+
+
+
+        // const newarry1=[...cartItem]
+
+        // const data={   
+        //     id:props.id,
+        //     img:props.img,
+        //     name:props.name,
+        //     des:props.des,
+        //     price:props.price
+        // }
+        // newarry1.push(data)
+        // setcartItem(newarry1)     
     }
 
 
@@ -36,7 +57,7 @@ const ProductCard = (props) => {
             </div>
             <div className="product-info">
                 <h3 className="product-brand">{props.name}</h3>
-                {/* <p className="product-short-des">{props.des}</p> */}
+                <p className="product-short-des">{props.des}</p>
                 <span className="price">NRs. {props.price}</span>
             </div>
         </div>

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { IconButton } from '@mui/material'
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos'
 import ProductCard from './ProductCard'
@@ -8,6 +8,8 @@ import { useEffect } from 'react'
 
 
 const ShowItem = (props) => {
+    const [apidata,setApiData]=useState([]);
+
     useEffect(
         () => {
             const productContainer = [...document.querySelectorAll('.product-container')];
@@ -28,6 +30,24 @@ const ShowItem = (props) => {
             })
         }
     )
+
+    useEffect(()=>{
+        productGet();
+     
+    },[])
+
+    const productGet= async ()=>{
+       await fetch("http://localhost:3500/addproduct",{
+            method:'GET',
+            headers:{
+                'Content-Type': 'application/json'
+            },
+        }).then((res)=>res.json()).then((data)=>{
+            setApiData(data)
+        })
+
+    }
+
   
     
   
@@ -48,17 +68,17 @@ const ShowItem = (props) => {
                 {
                    props.productsLists && props.productsLists.map((products)=>(
                         <ProductCard 
-                            id={products.id}
-                           name={products.name}
-                           img={products.img}
-                           price={products.price}
-                           des={products.description}
+                        name={products.name}
+                        img={products.img}
+                        price={products.price}
+                        des={products.des}
+                           
                         ></ProductCard>
 
                     ))
                 }
                 { 
-                    props.addedProductList && props.addedProductList.map((addedproduct)=>(
+                     apidata.map((addedproduct)=>(
                         <ProductCard
                             name={addedproduct.name}
                             img={addedproduct.img}
